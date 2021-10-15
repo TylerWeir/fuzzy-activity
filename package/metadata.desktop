@@ -1,0 +1,15 @@
+Name=Fuzzy Activity
+Comment=A widget to display your GitHub contribution frequency.
+
+Type=Service
+Icon=applications-development
+
+X-KDE-ServiceTypes=Plasma/Applet
+X-Plasma-MainScript=ui/main.qml
+
+X-KDE-PluginInfo-Author=Tyler Weir
+X-KDE-PluginInfo-Email=tylerw@live.com
+X-KDE-PluginInfo-Name=fuzzy-activity
+X-KDE-PluginInfo-Version=1
+X-KDE-PluginInfo-Website=com.github.TylerWeir.fuzzy-activity
+X-KDE-PluginInfo-Category=Online Services
