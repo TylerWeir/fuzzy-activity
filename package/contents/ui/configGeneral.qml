@@ -33,7 +33,7 @@ Item {
         }	
 		TextField {
 			id: userName
-			Kirigami.FormData.label: i18n("User Name:"
+			Kirigami.FormData.label: i18n("User Name:")
 			placeholderText: i18n("Placeholder")
 		}
 		TextField {
