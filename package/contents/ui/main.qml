@@ -12,8 +12,8 @@ Item {
 	Plasmoid.fullRepresentation: Item {
 		Layout.minimumWidth: label.implicitWidth
 		Layout.minimumHeight: label.implicitHeight
-		Layout.preferredWidth: 640 * PlasmaCore.Units.devicePixelRatio
-		Layout.preferredHeight: 480 * PlasmaCore.Units.devicePixelRatio
+		Layout.preferredWidth: plasmoid.configuration.width * PlasmaCore.Units.devicePixelRatio
+		Layout.preferredHeight: plasmoid.configuration.height * PlasmaCore.Units.devicePixelRatio
 
 		PlasmaComponents.Label {
 			id: label
