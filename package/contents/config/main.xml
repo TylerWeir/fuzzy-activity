@@ -9,6 +9,12 @@
 		<entry name="token" type="String">
 			<default>token</default>
 		</entry>
+		<entry name="width" type="int">
+			<default>640</default>
+		</entry>
+		<entry name="height" type="int">
+			<defualt>480</default>
+		<entry>
 	</group>
 </kcfg>
 
