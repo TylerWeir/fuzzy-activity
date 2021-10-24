@@ -6,20 +6,18 @@ import org.kde.plasma.plasmoid 2.0
 
 
 Item {
-	// Always display the full veiw
-	Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
 
-	Plasmoid.fullRepresentation: Item {
-		Layout.minimumWidth: label.implicitWidth
-		Layout.minimumHeight: label.implicitHeight
-		Layout.preferredWidth: plasmoid.configuration.width * PlasmaCore.Units.devicePixelRatio
-		Layout.preferredHeight: plasmoid.configuration.height * PlasmaCore.Units.devicePixelRatio
+	width: PlasmaCore.Units.gridUnit * 10
+	height: PlasmaCore.Units.gridUnit * 4
 
-		PlasmaComponents.Label {
-			id: label
-			anchors.fill: parent
-			text: "Fuzzy Activity"
-			horizontalAlignment: Text.AlignHCenter
-		}
-	}
+	Plasmoid.preferredRepresentation: Plasmoid.compactRepresentation
+
+	Plasmoid.toolTipMainText: "Main Tool Tip"
+	Plasmoid.toolTipSubText: "Here is a helpful tool tip."
+
+	Plasmoid.backgroundHints: PlasmaCore.Types.ShadowBackground | PlasmaCore.Types.ConfigurableBackground
+
+	Plasmoid.compactRepresentation: FuzzyActivity { }
+
 }
+
