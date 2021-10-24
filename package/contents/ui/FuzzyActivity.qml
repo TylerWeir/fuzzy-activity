@@ -1,4 +1,5 @@
 import QtQuick 2.0
+
 import QtQuick.Layouts 1.1
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 3.0 as PlasmaComponents3
@@ -22,8 +23,24 @@ Item {
 	 * Calls the GitHub Api to download user activity.
 	 */
 	function apiCall() {
-		
-		return "api data";
+		var req = new XMLHttpRequest();
+		req.open("GET", "http://api.github.com/users/TylerWeir/events");
+		req.onload = function() {
+			var objectArray = JSON.parse(req.responseText);
+			if (objectArray.errors !== undefined) {
+				console.log("Error fecthing activity: " + objectArray.errors[0].messsage);
+			} else {
+				for (var key in objectArray.statuses) {
+					var jsonObject = objectArray.statuses[key];
+					console.log("DID IT WORK?");
+					console.log(jsonObject);
+				}
+			}
+		}
+		req.send();
+
+		console.log("DEFAULT RETURN");
+		return "sasdf";
 	}
 
 	PlasmaComponents3.Label {
