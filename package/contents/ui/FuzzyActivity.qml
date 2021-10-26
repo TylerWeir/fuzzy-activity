@@ -15,7 +15,7 @@ Item {
 
 	Layout.minimumHeight: vertical ? sizehelper.paintedHeight + (PlasmaCore.Units.smallSpacing * 2) : 0
 	Layout.maximumHeight: vertical ? Layout.minimumHeight : Infinity 
-	Layout.preferredHeight: vertical ? Layout.minimumHeight: Plasmacore.Theme.mSize(PlasmaCore.theem.defaultFont).height *2
+	Layout.preferredHeight: vertical ? Layout.minimumHeight: PlasmaCore.Theme.mSize(PlasmaCore.theem.defaultFont).height *2
 
 	readonly property bool vertical: plasmoid.formFactor == PlasmaCore.Types.Vertical
 
@@ -23,24 +23,28 @@ Item {
 	 * Calls the GitHub Api to download user activity.
 	 */
 	function apiCall() {
-		var req = new XMLHttpRequest();
-		req.open("GET", "http://api.github.com/users/TylerWeir/events");
-		req.onload = function() {
-			var objectArray = JSON.parse(req.responseText);
-			if (objectArray.errors !== undefined) {
-				console.log("Error fecthing activity: " + objectArray.errors[0].messsage);
-			} else {
-				for (var key in objectArray.statuses) {
-					var jsonObject = objectArray.statuses[key];
-					console.log("DID IT WORK?");
-					console.log(jsonObject);
-				}
-			}
-		}
-		req.send();
+		// here is a helpful resource: https://javascript.info/xmlhttprequest 
+		// Create a new XMLHttpRequest object
+		let xhr = new XMLHttpRequest();
 
-		console.log("DEFAULT RETURN");
-		return "sasdf";
+		// Configure it
+		xhr.open('GET', 'https://api.github.com/users/TylerWeir');
+
+		// Send the request over the network
+		xhr.send();
+
+		// Runs once the response is received
+		xhr.onload = function() {
+			if (xhr.status != 200) {
+				console.log("Error!");
+				return "it did not work";
+			} else {
+				console.log("Done, got the data." + xhr.response.length);
+				return "it worked";
+			}
+		};
+
+
 	}
 
 	PlasmaComponents3.Label {
@@ -90,7 +94,7 @@ Item {
 		anchors {
 			fill: parent
 			leftMargin: PlasmaCore.Units.smallSpacing
-			rightMargin: PlasmaCore.units.smallSpacing
+			rightMargin: PlasmaCore.Units.smallSpacing
 		}
 	}
 }
